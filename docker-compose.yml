@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wedding_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/wedding_db?schema=public
+      PORT: 4000
+    depends_on:
+      - db
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:4000/api
+    depends_on:
+      - server
+
+volumes:
+  db_data:

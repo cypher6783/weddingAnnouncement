@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --background: #fdf9f5;
+  --foreground: #1a1a1a;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-golden-gradient text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-ambient focus:outline-none;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+  }
+  
+  .glass-card {
+    @apply bg-surface/80 backdrop-blur-xl border border-white/20 shadow-ambient rounded-2xl;
+  }
+}

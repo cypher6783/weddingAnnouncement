@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Wedding {
+  id           Int      @id @default(autoincrement())
+  couple_names String
+  date         DateTime
+  venue        String
+  story        String?
+  created_at   DateTime @default(now())
+
+  @@map("weddings")
+}
+
+model RSVP {
+  id                Int      @id @default(autoincrement())
+  name              String
+  attendance_status String
+  guest_count       Int      @default(1)
+  message           String?
+  created_at        DateTime @default(now())
+
+  @@map("rsvps")
+}
