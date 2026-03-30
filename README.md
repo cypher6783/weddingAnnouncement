@@ -86,7 +86,6 @@ A premium, full-stack wedding application designed for elegance, security, and i
 ├── client/          # Next.js Frontend Application
 ├── server/          # Express Backend & Prisma Configuration
 ├── database/        # Raw SQL schema for reference
-└── stitch_admin_dashboard/  # Initial Prototypes & Design Reference
 ```
 
 ---
@@ -100,6 +99,6 @@ A premium, full-stack wedding application designed for elegance, security, and i
 
 ---
 
-## Developed with ❤️ by Antigravity
+
 
 A production-ready, autonomous implementation of luxury wedding experiences.
